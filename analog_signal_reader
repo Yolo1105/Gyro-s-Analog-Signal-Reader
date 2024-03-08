@@ -1,0 +1,36 @@
+// Read analog signal from the gyro's RATEOUT pin
+#include <xc.h> 
+// Configuration bits 
+#pragma config FOSC = INTIO67   // Oscillator Selection bits
+#pragma config WDTEN = OFF      // Watchdog Timer Enable bit (these settings might need to be adjusted for your specific application)
+
+void initADC() {
+    // Set the gyro's RATEOUT analog pin to analog mode and input
+    ANSELBbits.ANSB2 = 1;   // Set RB2/AN4 to analog mode
+    TRISBbits.TRISB2 = 1;   // Set RB2 as an input
+
+    // Initialize ADC for 10-bit operation and select voltage references
+    ADCON1bits.AD12B = 0;   // 10-bit ADC operation
+    ADCON2 = 0;             // AVdd and AVss are the references
+    ADCON3 = 0x1F3F;        // Manual Sample, ADC Clock derived from system clock with 31 Tad
+    ADCHSbits.CH0SA = 4;    // Select AN4 for CH0 +ve input (assuming the gyro is connected here)
+    ADCON1bits.ADON = 1;    // Turn on the ADC
+}
+
+unsigned int readADC(unsigned char channel) {
+    ADCHSbits.CH0SA = channel; // Select the ADC channel (e.g., AN4 if connected to RB2)
+    ADCON1bits.SAMP = 1;       // Start sampling
+    while (ADCON1bits.DONE == 0); // Wait for the conversion to finish
+    ADCON1bits.SAMP = 0;       // Stop sampling
+    return ADCBUF0;            // Read the ADC result
+}
+
+int main() {
+    initADC(); // Initialize ADC
+
+    while(1) {
+        unsigned int adcValue = readADC(4); // Read ADC value from channel AN4 (change as per your circuit connection)
+        // Process adcValue as needed
+        // For example, you might want to send this over serial or display it on an LCD
+    }
+}
