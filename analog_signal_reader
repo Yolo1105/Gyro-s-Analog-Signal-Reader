@@ -2,18 +2,17 @@
 #include <xc.h> 
 // Configuration bits 
 #pragma config FOSC = INTIO67   // Oscillator Selection bits
-#pragma config WDTEN = OFF      // Watchdog Timer Enable bit (these settings might need to be adjusted for your specific application)
 
 void initADC() {
     // Set the gyro's RATEOUT analog pin to analog mode and input
-    ANSELBbits.ANSB2 = 1;   // Set RB2/AN4 to analog mode
-    TRISBbits.TRISB2 = 1;   // Set RB2 as an input
+    ANSELBbits.ANSB3 = 1;   // Set RB2/AN4 to analog mode
+    TRISBbits.TRISB3 = 1;   // Set RB3 as an input
 
     // Initialize ADC for 10-bit operation and select voltage references
     ADCON1bits.AD12B = 0;   // 10-bit ADC operation
     ADCON2 = 0;             // AVdd and AVss are the references
     ADCON3 = 0x1F3F;        // Manual Sample, ADC Clock derived from system clock with 31 Tad
-    ADCHSbits.CH0SA = 4;    // Select AN4 for CH0 +ve input (assuming the gyro is connected here)
+    ADCHSbits.CH0SA = 4;    // Select AN4 for CH0 +ve input (gyro is connected here)
     ADCON1bits.ADON = 1;    // Turn on the ADC
 }
 
