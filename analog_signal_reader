@@ -5,7 +5,7 @@
 
 void initADC() {
     // Set the gyro's RATEOUT analog pin to analog mode and input
-    ANSELBbits.ANSB3 = 1;   // Set RB2/AN4 to analog mode
+    ANSELBbits.ANSB3 = 1;   // Set AN3 to analog mode
     TRISBbits.TRISB3 = 1;   // Set RB3 as an input
 
     // Initialize ADC for 10-bit operation and select voltage references
