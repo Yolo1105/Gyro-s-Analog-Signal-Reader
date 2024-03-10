@@ -1,3 +1,23 @@
+Use the cable wire to connect to the debug side, then an user interface will show that Curiosity Nano is found. 
+
+File - New Project - Microchip Embedded - application projects
+Device - PIC24FJ64GU205 - Tool: PIC24FJ64GU205 Curiosity Nano-SN (If the cable successfully connected)
+Compiler Toolchains - XC-DSC (v3.00)
+Enter a project name and choose MCC (it stands for MPLAB Code Configurator, graphical programming environment integrated within the MPLAB X IDE, designed to simplify and accelerate the development process for Microchip's PIC microcontrollers and dsPIC digital signal controllers.)
+Click on Pin Manager window and click finish to download all necessary tools
+
+Right Click on the source file and select property to check if the environment settings are right
+If no, go to tools - options - embedded - build tools - scan for build tools
+    XC8: is for 8-bit PIC microcontrollers.
+    XC16: is for 16-bit PIC microcontrollers and dsPIC Digital Signal Controllers (DSCs).
+    XC32: is for 32-bit PIC32 microcontrollers
+    XC-DSC: is for Digital Signal Controllers (DSCs) from Microchip, such as the dsPIC series
+    
+PIC24FJ64GU205 is a 16-bit microcontroller!!! Choose XC16 if you are programmed in C++
+If not installed yet, please browse to official website to download XC16
+https://www.microchip.com/en-us/search?searchQuery=xc16&category=ALL&fq=start%3D0%26rows%3D10
+Then get back to the build tools interface and click on scan for build tools
+
 The `initADC()` function in the code is used to initialize the Analog-to-Digital Converter (ADC) of the PIC microcontroller. It prepares the microcontroller to read analog signals from its pins and convert those signals into digital values that the microcontroller can process.
 
 Here's a breakdown of what each part of the `initADC()` function is doing:
