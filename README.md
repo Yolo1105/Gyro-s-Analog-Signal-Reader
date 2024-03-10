@@ -20,6 +20,8 @@ Then get back to the build tools interface and click on scan for build tools
 
 The `initADC()` function in the code is used to initialize the Analog-to-Digital Converter (ADC) of the PIC microcontroller. It prepares the microcontroller to read analog signals from its pins and convert those signals into digital values that the microcontroller can process.
 
+Right click the tool bar and select to show the build production
+
 Here's a breakdown of what each part of the `initADC()` function is doing:
 
 1. **Set Analog Pin Mode:**
