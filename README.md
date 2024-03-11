@@ -1,3 +1,6 @@
+Please refer to the following link for more information
+https://github.com/microchip-pic-avr-examples/pic24fj64gu205-curiosity-nano-usb-clc-adc
+
 Use the cable wire to connect to the debug side, then an user interface will show that Curiosity Nano is found. 
 
 File - New Project - Microchip Embedded - application projects
